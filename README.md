@@ -41,3 +41,14 @@ gcloud compute instances create reddit-app4 \
 ### Создание правила firewall
 
 gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags=puma-server
+
+# Дз №5
+
+## Созданы шаблоны сборки images для packer - ubuntu16.json, immutable.json
+
+## Создан файл переменных variables.json и его example вариант
+
+## Создан инсталяционный скрипт устанавливающий приложение и его зависимости + демонизация приложения и его автозапус - packer/files/install.sh
+
+## Созданы вспомогательные скрипты для сборки образов (полного и нет) - config-scripts/packer_build_full.sh, config-scripts/packer_build.sh
+## и скрипт создания инстанса config-scripts/create-redditvm.sh

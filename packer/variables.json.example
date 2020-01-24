@@ -1,0 +1,5 @@
+{
+  "project_id": "infra-26573453453453453417",
+  "source_image_family": "ubuntu-lts",
+  "machine_type": "f1-micro"
+}
