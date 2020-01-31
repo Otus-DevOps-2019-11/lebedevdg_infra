@@ -1,0 +1,34 @@
+#!/bin/sh -xe
+
+
+cd /home/appuser
+
+git clone -b monolith https://github.com/express42/reddit.git
+
+cd reddit && bundle install
+
+# Создаем юнит
+cat <<EOF> /tmp/puma.service
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+User=appuser
+Environment="DATABASE_URL=${database_url}"
+WorkingDirectory=/home/appuser/reddit
+ExecStart=/bin/bash -lc 'puma'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo cp /tmp/puma.service /etc/systemd/system/puma.service
+
+# Устанавливаем права на юнит демона
+sudo chmod 664 /etc/systemd/system/puma.service
+
+# Перезапускаем systemd
+sudo systemctl daemon-reload && sudo systemctl enable puma && sudo systemctl start puma || echo "Error"
