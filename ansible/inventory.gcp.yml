@@ -1,0 +1,18 @@
+plugin: gcp_compute
+zones:
+    - europe-north1-a
+projects:
+    - infra-265717
+service_account_file: /root/lebedevdg_infra/ansible/infra-265717-a32f80d8cfce.json
+auth_kind: serviceaccount
+keyed_groups: null
+groups:
+    app: '''-app'' in name'
+    db: '''-db'' in name'
+filters: 'status = RUNNING'
+hostnames:
+    - name
+compose:
+    ansible_host: 'networkInterfaces[0].accessConfigs[0].natIP'
+    internal_ip: 'networkInterfaces[0].networkIP'
+strict: true

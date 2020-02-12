@@ -9,7 +9,6 @@ resource "google_compute_instance" "app" {
     }
   }
 
-
   network_interface {
     network = "default"
     access_config {
@@ -36,6 +35,13 @@ resource "google_compute_instance" "app" {
   provisioner "remote-exec" {
     inline = [var.enable_provision ? "chmod 777 /tmp/deploy.sh && /tmp/deploy.sh" : "exit 0"]
   }
+
+
+
+    labels = {
+      app = "true"
+    }
+
 
 
 }
