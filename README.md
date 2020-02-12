@@ -87,3 +87,5 @@ gsutil ls -r gs://tf-state-strg-bckt/**
 # Дз №8
 
 ## После выполнения ansible app -m command -a 'rm -rf ~/reddit' всегда получаем статус chenget непонятно состояние, нет информации о том, что было сделано.
+
+## Динамический JSON inventory реализован спомощью ansible plugin gcp
