@@ -83,3 +83,7 @@ gsutil ls -r gs://tf-state-strg-bckt/**
 
 ## (**) в модули app и db добавлены provisioner для настройки и старта приложения;
 ## добавлена возможность отключения provisioner (переменная enable_provision)
+
+# Дз №8
+
+## После выполнения ansible app -m command -a 'rm -rf ~/reddit' всегда получаем статус chenget непонятно состояние, нет информации о том, что было сделано.
