@@ -6,3 +6,4 @@ variables.json
 *.tfvars
 .terraform/
 infra-265717-a32f80d8cfce.json
+*.retry

@@ -7,8 +7,7 @@
     "disk_type": "pd-ssd",
     "image_description": "Packer db images",
     "network": "default",
-    "tags": "reddit-app",
-    "var_ssh_username": "appuser"
+    "tags": "reddit-app"
   },
   "builders": [
     {
@@ -29,9 +28,9 @@
   ],
   "provisioners": [
     {
-      "type": "ansible",
-      "playbook_file": "../ansible/packer_db.yml",
-      "user": "{{user `var_ssh_username`}}"
+      "type": "shell",
+      "script": "scripts/install_mongodb.sh",
+      "execute_command": "sudo {{.Path}}"
     }
   ]
 }
