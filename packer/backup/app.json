@@ -5,17 +5,16 @@
     "machine_type": "f1-micro",
     "disk_size": "10",
     "disk_type": "pd-ssd",
-    "image_description": "Packer db images",
+    "image_description": "Packer app images",
     "network": "default",
-    "tags": "reddit-app",
-    "var_ssh_username": "appuser"
+    "tags": "reddit-app"
   },
   "builders": [
     {
       "type": "googlecompute",
       "project_id": "{{user `project_id`}}",
-      "image_name": "reddit-base-db-{{timestamp}}",
-      "image_family": "reddit-base-db",
+      "image_name": "reddit-base-app-{{timestamp}}",
+      "image_family": "reddit-base-app",
       "source_image_family": "{{user `source_image_family`}}",
       "zone": "europe-north1-a",
       "ssh_username": "appuser",
@@ -27,11 +26,17 @@
       "tags": "{{user `tags`}}"
     }
   ],
+//  "provisioners": [
+//    {
+//      "type": "shell",
+//      "script": "scripts/install_ruby.sh",
+//      "execute_command": "sudo {{.Path}}"
+//    }
+//  ]
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "ansible/packer_db.yml",
-      "user": "{{user `var_ssh_username`}}"
+      "playbook_file": "ansible/packer_app.yml"
     }
   ]
 }

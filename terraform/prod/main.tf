@@ -14,7 +14,7 @@ module "app" {
   zone             = var.zone
   app_disk_image   = var.app_disk_image
   database_ip      = module.db.db_internal_ip
-  enable_provision = true
+  enable_provision = false
 }
 
 
@@ -22,7 +22,7 @@ module "db" {
   source           = "../modules/db"
   zone             = var.zone
   db_disk_image    = var.db_disk_image
-  enable_provision = true
+  enable_provision = false
 }
 
 

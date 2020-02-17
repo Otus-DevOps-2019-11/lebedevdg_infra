@@ -89,3 +89,48 @@ gsutil ls -r gs://tf-state-strg-bckt/**
 ## После выполнения ansible app -m command -a 'rm -rf ~/reddit' всегда получаем статус chenget непонятно состояние, нет информации о том, что было сделано.
 
 ## Динамический JSON inventory реализован спомощью ansible plugin gcp
+
+# Дз №9
+
+## реализация: один ansible playbook, один сценарий
+
+ansible-playbook reddit_app_one_play.yml --check --limit db --tags db-tag
+ansible-playbook reddit_app_one_play.yml --limit db --tags db-tag
+
+ansible-playbook reddit_app_one_play.yml --check --limit app --tags app-tag
+ansible-playbook reddit_app_one_play.yml --limit app --tags app-tag
+
+ansible-playbook reddit_app_one_play.yml --check --limit app --tags deploy-tag
+ansible-playbook reddit_app_one_play.yml --limit app --tags deploy-tag
+
+# реализация: один playbook, несколько сценариев
+
+ansible-playbook reddit_app_multiple_plays.yml --tags db-tag --check
+ansible-playbook reddit_app_multiple_plays.yml --tags db-tag
+
+ansible-playbook reddit_app_multiple_plays.yml --tags app-tag --check
+ansible-playbook reddit_app_multiple_plays.yml --tags app-tag
+
+ansible-playbook reddit_app_multiple_plays.yml --tags deploy-tag --check
+ansible-playbook reddit_app_multiple_plays.yml --tags deploy-tag
+
+ansible-playbook reddit_app_multiple_plays.yml --check
+ansible-playbook reddit_app_multiple_plays.yml
+
+# реализация: несколько плейбуков
+
+ansible-playbook site.yml --check
+ansible-playbook site.yml
+
+# сделан dynamic inventory через плагин gcp_compute
+
+ansible-inventory -i inventory.gcp.yml --list
+ansible all -i inventory.gcp.yml -m ping
+
+# переделан provision в packer с использованием ansible
+
+packer validate -var-file=packer/variables.json packer/db.json
+packer build -var-file=packer/variables.json packer/db.json
+
+packer validate -var-file=packer/variables.json packer/app.json
+packer build -var-file=packer/variables.json packer/app.json
