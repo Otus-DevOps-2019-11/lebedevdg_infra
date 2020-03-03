@@ -27,10 +27,31 @@ galaxy_info:
   # To view available platforms and versions (or releases), visit:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
-  # platforms:
-  # - name: Fedora
-  #   versions:
-  #   - all
+  platforms:
+    - name: EL
+      versions:
+       	- all
+    - name: Fedora
+      versions:
+       	- all
+    - name: opensuse
+      versions:
+       	- all
+    - name: Ubuntu
+      versions:
+       	- all
+    - name: Debian
+      versions:
+       	- all
+    - name: FreeBSD
+      versions:
+       	- 10.0
+       	- 10.1
+       	- 10.2
+       	- 10.3
+       	- 11.0
+       	- 11.1
+    - name: SmartOS
   #   - 25
   # - name: SomePlatform
   #   versions:
