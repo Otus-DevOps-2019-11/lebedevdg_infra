@@ -134,3 +134,37 @@ packer build -var-file=packer/variables.json packer/db.json
 
 packer validate -var-file=packer/variables.json packer/app.json
 packer build -var-file=packer/variables.json packer/app.json
+
+# Дз №10
+
+https://travis-ci.com/Otus-DevOps-2019-11/lebedevdg_infra.svg?branch=master
+
+## перенесены созданные плейбуки app и db в соответствующие роли
+
+## созданы два ansible окружения stage и prod со своими настройками, включая dynamic inventory (*)
+
+ansible-playbook playbooks/site.yml --check
+ansible-playbook playbooks/site.yml
+
+ansible-playbook -i environments/prod/inventory.gcp.yml playbooks/site.yml --check
+ansible-playbook -i environments/prod/inventory.gcp.yml playbooks/site.yml
+
+## изучено использование коммьюнити ролей на примере роли nginx
+
+## изучено применение ansible-vault на примере задачи создания новых пользователей
+
+ansible-vault encrypt environments/stage/credentials.yml
+ansible-vault encrypt environments/prod/credentials.yml
+
+ansible-vault edit environments/stage/credentials.yml
+ansible-vault edit environments/prod/credentials.yml
+
+ansible-vault decrypt environments/stage/credentials.yml
+ansible-vault decrypt environments/prod/credentials.yml
+
+## (**) написаны Travis CI тесты для PR и коммитов в master
+##        выполняется packer validate для всех шаблонов
+##        выполняется terraform validate и tflint для бакета и stage и prod окружений
+##        выполняется ansible-playbook --syntax-check и ansible-lint для всех плейбуков
+
+##        в README.md добавлен бейдж со статусом билда
