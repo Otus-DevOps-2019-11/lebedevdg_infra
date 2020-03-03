@@ -9,7 +9,7 @@ variable region {
 variable zone {
   description = "Zone"
   # Значение по умолчанию
-  default = "europe-north1-a"
+  default = "europe-north1-b"
 }
 variable public_key_path {
   # Описание переменной
