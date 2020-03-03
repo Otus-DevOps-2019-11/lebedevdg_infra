@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Otus-DevOps-2019-11/lebedevdg_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2019-11/lebedevdg_infra)
+
 # lebedevdg_infra
 lebedevdg Infra repository
 
@@ -136,8 +138,6 @@ packer validate -var-file=packer/variables.json packer/app.json
 packer build -var-file=packer/variables.json packer/app.json
 
 # Дз №10
-
-https://travis-ci.com/Otus-DevOps-2019-11/lebedevdg_infra.svg?branch=master
 
 ## перенесены созданные плейбуки app и db в соответствующие роли
 
