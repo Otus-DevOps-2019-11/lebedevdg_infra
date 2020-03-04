@@ -1,6 +1,6 @@
 plugin: gcp_compute
 zones:
-    - europe-north1-a
+    - europe-north1-b
 projects:
     - infra-265717
 service_account_file: /root/lebedevdg_infra/ansible/infra-265717-a32f80d8cfce.json

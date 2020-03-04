@@ -1,0 +1,5 @@
+---
+# defaults file for app
+
+db_host: '{{ hostvars[groups[''db''][0]][''internal_ip''] }}'
+env: app
