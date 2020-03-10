@@ -9,3 +9,10 @@ infra-265717-a32f80d8cfce.json
 *.retry
 jdauphant.nginx
 *.key
+##### Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
