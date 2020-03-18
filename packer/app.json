@@ -31,8 +31,8 @@
   "provisioners": [
     {
       "type": "ansible",
-      "ansible_env_vars": ["ANSIBLE_ROLES_PATH=../ansible/roles"],
-      "playbook_file": "../ansible/playbooks/packer_app.yml",
+      "ansible_env_vars": ["ANSIBLE_ROLES_PATH=ansible/roles"],
+      "playbook_file": "ansible/playbooks/packer_app.yml",
       "extra_arguments": ["--tags", "ruby"],
       "user": "{{user `var_ssh_username`}}"
     }
