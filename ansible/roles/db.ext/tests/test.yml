@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - db
+    - ansible_role_db

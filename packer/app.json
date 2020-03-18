@@ -8,7 +8,8 @@
     "image_description": "Packer app images",
     "network": "default",
     "tags": "reddit-app",
-    "var_ssh_username": "appuser"
+    "var_ssh_username": "appuser",
+    "zone": "europe-north1-a"
   },
   "builders": [
     {
@@ -17,7 +18,7 @@
       "image_name": "reddit-base-app-{{timestamp}}",
       "image_family": "reddit-base-app",
       "source_image_family": "{{user `source_image_family`}}",
-      "zone": "europe-north1-a",
+      "zone": "{{user `zone`}}",
       "ssh_username": "appuser",
       "machine_type": "{{user `machine_type`}}",
       "disk_size": "{{user `disk_size`}}",
@@ -30,7 +31,9 @@
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "ansible/playbooks/packer_app.yml",
+      "ansible_env_vars": ["ANSIBLE_ROLES_PATH=../ansible/roles"],
+      "playbook_file": "../ansible/playbooks/packer_app.yml",
+      "extra_arguments": ["--tags", "ruby"],
       "user": "{{user `var_ssh_username`}}"
     }
   ]
