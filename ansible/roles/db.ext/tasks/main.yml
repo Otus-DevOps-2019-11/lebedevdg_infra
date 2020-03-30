@@ -4,9 +4,5 @@
   debug:
     msg: "This host is in {{ env }} environment!!! internal ip {{ ansible_all_ipv4_addresses }} external ip {{ ansible_ssh_host }}"
 
-- name: Change mongo config file
-  template:
-     src: mongod.conf.j2
-     dest: /etc/mongod.conf
-     mode: 420
-  notify: restart mongod
+- include: install_mongo.yml
+- include: config_mongo.yml

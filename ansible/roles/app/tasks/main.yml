@@ -4,17 +4,5 @@
   debug:
     msg: "This host is in {{ env }} environment!!! internal ip {{ ansible_all_ipv4_addresses }} external ip {{ ansible_ssh_host }}"
 
-
-- name: Add unit file for Puma
-  copy:
-    src: puma.service
-    dest: /etc/systemd/system/puma.service
-
-- name: enable puma
-  systemd: name=puma enabled=yes
-
-- name: Add config for DB connection
-  template:
-    src: db_config.j2
-    dest: /home/appuser/db_config
-  notify: reload puma
+- include: ruby.yml
+- include: puma.yml
